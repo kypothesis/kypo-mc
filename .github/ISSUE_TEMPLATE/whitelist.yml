@@ -1,0 +1,36 @@
+name: 申请白名单
+description: 把你的 Minecraft 角色名提交给服务器
+title: "[白名单] "
+labels: ["whitelist"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交后服务器会在几分钟内自动处理，成功会在这里回复并关闭这个 issue。
+
+        如果 5 分钟还没反应，直接在 issue 里 @ 一下服主。
+  - type: input
+    id: mcname
+    attributes:
+      label: 角色名
+      description: 你在 LittleSkin 创建的那个角色名（3–16 位字母、数字或下划线）
+      placeholder: "例如：Steve_2026"
+    validations:
+      required: true
+  - type: input
+    id: littleskin
+    attributes:
+      label: LittleSkin 主页（可选）
+      description: 填了方便我核对是同一个人
+      placeholder: "https://littleskin.cn/user/xxxx"
+    validations:
+      required: false
+  - type: checkboxes
+    id: ack
+    attributes:
+      label: 确认
+      options:
+        - label: 我已经在 littleskin.cn 注册并创建了这个角色
+          required: true
+        - label: 我同意不乱搞（不破坏别人建筑、不用外挂）
+          required: true
