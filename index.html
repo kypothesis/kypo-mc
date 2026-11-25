@@ -3,168 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kypo MC · 入服指南</title>
+<title>申请白名单 · Kypo MC</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1424'/%3E%3Ccircle cx='32' cy='30' r='16' fill='%23f6d789'/%3E%3Ccircle cx='38' cy='24' r='15' fill='%230f1424'/%3E%3C/svg%3E">
 <style>
-  :root{
-    --bg:#0b1020; --card:#141b30; --line:#243055; --text:#e8edff;
-    --dim:#95a3c9; --green:#3dfc6e; --cyan:#2ee6c8; --blue:#4aa8ff;
-    --purple:#b05cff; --pink:#ff4db8;
-  }
+  :root{ --text:#e8edff; --dim:#8b99bd; --green:#3dfc6e; --cyan:#2ee6c8; --pink:#ff4db8 }
   *{box-sizing:border-box}
   body{
-    margin:0;background:radial-gradient(120% 90% at 50% -10%,#1b2447 0%,#0b1020 55%,#070a14 100%);
-    color:var(--text);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    min-height:100vh;padding:40px 18px 80px;
+    margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;
+    background:radial-gradient(120% 90% at 50% -10%,#1b2447,#0b1020 60%,#070a14);
+    color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
   }
-  .wrap{max-width:720px;margin:0 auto}
-  header{text-align:center;margin-bottom:36px}
+  .card{
+    width:100%;max-width:380px;padding:34px 30px;border-radius:20px;text-align:center;
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    border:1px solid #243055;backdrop-filter:blur(8px);
+  }
   h1{
-    font-size:34px;margin:0 0 6px;letter-spacing:.06em;
-    background:linear-gradient(90deg,var(--green),var(--cyan) 35%,var(--blue) 62%,var(--purple) 84%,var(--pink));
+    font-size:26px;margin:0 0 6px;letter-spacing:.08em;
+    background:linear-gradient(90deg,var(--green),var(--cyan) 45%,#4aa8ff);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .sub{color:var(--dim);font-size:14px;letter-spacing:.14em;text-transform:uppercase}
-  .card{
-    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-    border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:0 0 16px;
-    backdrop-filter:blur(6px);
+  p.sub{color:var(--dim);font-size:13.5px;margin:0 0 26px}
+  input{
+    width:100%;padding:13px 15px;border-radius:11px;border:1px solid #2b3862;
+    background:rgba(255,255,255,.04);color:var(--text);font-size:16px;outline:none;
   }
-  .card h2{font-size:17px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
-  .card h2 .no{
-    display:inline-grid;place-items:center;width:22px;height:22px;border-radius:7px;
-    background:rgba(74,168,255,.16);color:var(--blue);font-size:12px;font-weight:700
+  input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(46,230,200,.14)}
+  button{
+    width:100%;margin-top:12px;padding:13px;border:0;border-radius:11px;cursor:pointer;
+    font-size:16px;font-weight:700;color:#052312;
+    background:linear-gradient(90deg,var(--green),var(--cyan));
   }
-  dl{margin:0;display:grid;grid-template-columns:88px 1fr;gap:8px 14px}
-  dt{color:var(--dim);font-size:14px}
-  dd{margin:0}
-  code,.mono{
-    font-family:ui-monospace,Consolas,monospace;background:rgba(255,255,255,.06);
-    padding:2px 7px;border-radius:6px;font-size:14px
-  }
-  .addr{font-size:18px;font-weight:700;color:var(--cyan)}
-  ol{margin:0;padding-left:20px}
-  ol li{margin:6px 0}
-  .tip{color:var(--dim);font-size:14px;margin-top:10px}
-  .warn{
-    border-left:3px solid var(--pink);background:rgba(255,77,184,.07);
-    padding:12px 16px;border-radius:0 10px 10px 0;font-size:14px;color:#ffd7ef
-  }
-  .btn{
-    display:inline-block;margin-top:6px;padding:10px 18px;border-radius:10px;
-    background:linear-gradient(90deg,var(--green),var(--cyan));color:#06210f;
-    font-weight:700;text-decoration:none;font-size:15px
-  }
-  details{border-top:1px solid var(--line);padding:12px 0}
-  details:first-of-type{border-top:0}
-  summary{cursor:pointer;font-weight:600}
-  details p{color:var(--dim);margin:8px 0 0;font-size:14.5px}
-  footer{text-align:center;color:#5d6b90;font-size:12.5px;margin-top:40px;line-height:2}
-  footer a{color:#7f90bb}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .hint{color:var(--dim);font-size:12.5px;margin-top:16px;line-height:1.75}
+  .err{color:var(--pink);font-size:13px;margin-top:10px;min-height:18px}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="card">
+  <h1>申请白名单</h1>
+  <p class="sub">Kypo MC · 26.3 · mc.kypo.cn</p>
 
-  <header>
-    <h1>KYPO</h1>
-    <div class="sub">Minecraft 26.3 · Fabric · 一个小得刚好够养的服</div>
-  </header>
+  <input id="name" type="text" placeholder="LittleSkin 角色名" autocomplete="off" spellcheck="false" maxlength="16">
+  <button id="go" disabled>提交</button>
+  <div class="err" id="err"></div>
 
-  <div class="card">
-    <h2><span class="no">1</span> 怎么连</h2>
-    <dl>
-      <dt>服务器地址</dt><dd><span class="addr">mc.kypo.cn</span></dd>
-      <dt>端口</dt><dd>默认 <code>25565</code>，不用填</dd>
-      <dt>版本</dt><dd><code>26.3</code>（Java 版，需要 Java 25）</dd>
-      <dt>客户端</dt><dd>原版就行；装 Fabric 优化模组更好（见下方）</dd>
-    </dl>
-    <p class="tip">多人游戏 → 添加服务器 → 地址填 <code>mc.kypo.cn</code> → 双击进入。</p>
+  <div class="hint">
+    填你在 <b>littleskin.cn</b> 创建的角色名。<br>
+    点提交会跳到 GitHub，再点一次 <b>Submit new issue</b> 就好，几分钟内自动通过。
   </div>
-
-  <div class="card">
-    <h2><span class="no">2</span> 第一次进服：先去皮肤站注册</h2>
-    <p>本服使用 <b>LittleSkin 外置登录</b>，不是盗版服，也不用正版账号。</p>
-    <ol>
-      <li>打开 <a href="https://littleskin.cn" target="_blank" rel="noopener">littleskin.cn</a>，注册一个账号（邮箱即可）。</li>
-      <li>在「角色管理」里创建游戏角色，记下<b>角色名</b>。</li>
-      <li>启动器里选 <b>外置登录 / Authlib-Injector</b>，认证服务器填
-        <code>https://littleskin.cn/api/yggdrasil</code>。</li>
-      <li>把这个角色名发给服主（或者走下面的自助申请），加进白名单。</li>
-    </ol>
-    <div class="warn">
-      白名单是强制的：名字不在名单里，会在登录握手阶段被弹回去。
-      改名之后也要重新申请。
-    </div>
-  </div>
-
-  <div class="card">
-    <h2><span class="no">3</span> 申请白名单</h2>
-    <p>把你的 <b>LittleSkin 角色名</b> 提交一下，服务器会每几分钟自动处理一次。</p>
-    <a class="btn" id="applyLink" href="#" target="_blank" rel="noopener">申请白名单 →</a>
-    <p class="tip">提交后一般几分钟内生效；进不去就等等再试，或者直接找服主。</p>
-  </div>
-
-  <div class="card">
-    <h2><span class="no">4</span> 这个服有什么</h2>
-    <dl>
-      <dt>模式</dt><dd>生存 · 建造 · 随便玩，无经济无排行</dd>
-      <dt>世界</dt><dd>主机周围 3000 格已预生成，跑图不卡</dd>
-      <dt>死亡</dt><dd>物品装进<b>墓碑</b>，跑回去右键取回（不会消失）</dd>
-      <dt>坐标</dt><dd>死亡时会在聊天栏报坐标</dd>
-      <dt>备份</dt><dd>每天 04:30 增量、每周一次全量</dd>
-    </dl>
-  </div>
-
-  <div class="card">
-    <h2><span class="no">5</span> 常见问题</h2>
-
-    <details>
-      <summary>提示「Invalid session」/ 一直连不上？</summary>
-      <p>九成是启动器没切成外置登录。检查启动器里的认证服务器是不是
-        <code>https://littleskin.cn/api/yggdrasil</code>，并且用的是 LittleSkin 的角色名。</p>
-    </details>
-
-    <details>
-      <summary>提示版本不匹配？</summary>
-      <p>本服是 <code>26.3</code>，请把客户端也升到 26.3。老版本（1.21.x）进不来。</p>
-    </details>
-
-    <details>
-      <summary>进来后被要求下载「服务器资源包」？</summary>
-      <p>同意即可，只有几十 KB，用来显示墓碑方块的外观。不装也能玩，只是墓碑会显示成普通方块。</p>
-    </details>
-
-    <details>
-      <summary>很卡、掉帧怎么办？</summary>
-      <p>装这几个客户端模组，帧数能翻倍：<b>Sodium</b>、<b>Iris</b>（要光影才装）、
-        <b>ImmediatelyFast</b>、<b>EntityCulling</b>、<b>FerriteCore</b>、<b>Krypton</b>。
-        国服网络差的话，再装个 <b>No Chat Reports</b> 能少点延迟抖动。</p>
-    </details>
-
-    <details>
-      <summary>能带朋友来吗？</summary>
-      <p>可以，让ta也走一遍「LittleSkin 注册 → 提交角色名」的流程。目前上限 10 人。</p>
-    </details>
-
-    <details>
-      <summary>东西丢了 / 世界回档了怎么办？</summary>
-      <p>找服主。每天 04:30 有增量备份、每周一次全量，能回滚到最近一次备份点。</p>
-    </details>
-  </div>
-
-  <footer>
-    服主：Donkie · 域名 kypo.cn<br>
-    本页为静态页面，不含追踪脚本
-  </footer>
 </div>
 
 <script>
-  // 申请入口可以换成你自己的表单/仓库 Issue 地址
-  var APPLY_URL = "https://github.com/REPLACE_ME/kypo-mc/issues/new?template=whitelist.yml";
-  var a = document.getElementById("applyLink");
-  if (!APPLY_URL.includes("REPLACE_ME")) a.href = APPLY_URL;
-  else { a.removeAttribute("href"); a.textContent = "申请入口待配置（找服主）"; a.style.opacity = ".6"; }
+  // 换成你的仓库：owner/repo
+  var REPO = "REPLACE_ME";
+
+  var input = document.getElementById("name");
+  var btn = document.getElementById("go");
+  var err = document.getElementById("err");
+
+  function valid(v) { return /^[A-Za-z0-9_]{3,16}$/.test(v); }
+
+  input.addEventListener("input", function () {
+    var v = input.value.trim();
+    btn.disabled = !valid(v);
+    err.textContent = v && !valid(v) ? "只能用 3–16 位字母、数字、下划线" : "";
+  });
+
+  btn.addEventListener("click", function () {
+    var name = input.value.trim();
+    if (!valid(name)) return;
+    if (REPO === "REPLACE_ME") {
+      err.textContent = "申请入口还没配置，先找服主吧";
+      return;
+    }
+    var url = "https://github.com/" + REPO + "/issues/new"
+      + "?template=whitelist.yml"
+      + "&title=" + encodeURIComponent("[白名单] " + name)
+      + "&body=" + encodeURIComponent("角色名: " + name);
+    location.href = url;
+  });
+
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !btn.disabled) btn.click();
+  });
 </script>
 </body>
 </html>
